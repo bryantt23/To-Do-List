@@ -1,7 +1,13 @@
-body {
-    padding: 0px;
-    margin: 0px;
+html {
     background-color: #dce9f8;
-    color: black;
     height: 100vh;
+}
+
+.header {
+    background-color: #00abe4;
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    box-shadow: 0 6px 6px -2px rgba(0, 0, 0, 0.2);;
 }
