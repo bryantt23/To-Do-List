@@ -18,6 +18,21 @@ addTask.addEventListener("click", function () {
     document.querySelector(".form-popup").style.display = "none";
     reset.reset();
 });
-//Access Tasks Dropdown
+//Access Tasks Dropdown Open/Close on Click In/Out
+const viewTaskbtn = document.querySelector(".dropbtn")
+const viewTask = document.querySelector(".dropdown-content")
 
+viewTaskbtn.addEventListener("click", function () {
+    if(viewTask.style.display === "block"){
+        viewTask.style.display = "none";
+    } else {
+        viewTask.style.display = "block";
+    }
+});
+
+document.addEventListener("click", function(event){
+    if(event.target !== viewTaskbtn && !viewTask.contains(event.target)) {
+        viewTask.style.display = "none";
+    }
+});
 
