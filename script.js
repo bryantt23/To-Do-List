@@ -1,17 +1,21 @@
-//form script
-let openForm = document.querySelector(".open");
+//Create Task
+const openForm = document.querySelector(".open");
 openForm.addEventListener("click", function () {
     document.querySelector(".form-popup").style.display = "block";
 });
+//Cancel and Submit Form
+const reset = document.querySelector(".form-container")
+const closeForm = document.querySelector(".cancel")
+const addTask = document.querySelector(".btn")
 
-let closeForm = document.querySelector(".cancel")
 closeForm.addEventListener("click", function () {
     document.querySelector(".form-popup").style.display = "none";
-})
+    reset.reset();
+});
 
-let addTask = document.querySelector(".btn")
 addTask.addEventListener("click", function () {
+    event.preventDefault();
     document.querySelector(".form-popup").style.display = "none";
-})
+    reset.reset();
+});
 
-//add categories in drop down menu on form
