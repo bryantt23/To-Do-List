@@ -27,6 +27,13 @@
         <div class="form-popup" id="myForm">
             <form action="/action_page.php" class="form-container">
                 <h1>Task Details</h1>
+                <label for="category" id="cat">Choose a category</label>
+                <select id="category" name="category" required>
+                    <option value="Home">Home</option>
+                    <option value="Work">Work</option>
+                    <option value="Mind">Mind</option>
+                    <option value="Miscellaneous">Miscellaneous</option>
+                </select>
                 <label for="Title"><b>Title</b></label>
                 <input type="text" name="Title" required>
                 <label for="Description"><b>Description</b></label>

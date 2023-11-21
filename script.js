@@ -13,3 +13,5 @@ let addTask = document.querySelector(".btn")
 addTask.addEventListener("click", function () {
     document.querySelector(".form-popup").style.display = "none";
 })
+
+//add categories in drop down menu on form

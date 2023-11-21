@@ -42,10 +42,15 @@ html {
   background-color: #00abe4;
 }
 
-.form-container input[type=text], .form-container input[type=date], .form-container input[type=radio] {
+#cat {
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.form-container input[type=text], .form-container input[type=date], .form-container input[type=radio],#category {
   width: 90%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
+  padding: 5px;
+  margin: 5px 0 21px 0;
   border: none;
   background: #f1f1f1;
 }
@@ -68,12 +73,15 @@ html {
 
 #high {
     accent-color: red;
+    height: 15px;
 }
 
 #medium {
     accent-color: yellow;
+    height: 15px;
 }
 
 #low {
-    accent-color: rgb(76, 241, 76);
+    accent-color: rgb(44, 227, 44);
+    height: 15px;
 }
