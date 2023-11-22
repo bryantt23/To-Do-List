@@ -15,6 +15,7 @@ closeForm.addEventListener("click", function () {
 
 addTask.addEventListener("click", function () {
     event.preventDefault();
+    let taskInfo = taskValue();
     document.querySelector(".form-popup").style.display = "none";
     reset.reset();
 });
@@ -35,4 +36,27 @@ document.addEventListener("click", function(event){
         viewTask.style.display = "none";
     }
 });
+
+//Get Tasks Values
+function taskValue() {
+    let cats = document.getElementById("#category").value;
+    let title = document.getElementById("#title").value;
+    let descript = document.getElementById("#description").value;
+    let date = document.getElementById("#date").value;
+    let priority = document.querySelector(".p-value").value;
+    let notes = documcument.getElementById("#notes").value;
+
+    let taskInfo = new task(cats, title, descript, date, priority, notes);
+
+    return taskInfo;
+}
+
+
+
+
+
+//Display tasks on page
+//Make them default on page load
+//Add edit and delete buttons 
+//Figure out how to sort them by category
 

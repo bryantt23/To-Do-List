@@ -45,11 +45,11 @@
                     <option value="Miscellaneous">Miscellaneous</option>
                 </select>
                 <label for="Title"><b>Title</b></label>
-                <input type="text" name="Title" required>
+                <input type="text" id="title" name="Title" required>
                 <label for="Description"><b>Description</b></label>
-                <input type="text" name="Description" required>
+                <input type="text" id="description" name="Description" required>
                 <label for="Due Date"><b>Due Date</b></label>
-                <input type="date" name="Due Date" required>
+                <input type="date" id="date" name="Due Date" required>
                 <label for="Priority"><b>Priority</b></label>
                 <div class="p-value">Low</div>
                 <input type="radio" name="Priority" id="low" value="low" required>
@@ -58,7 +58,7 @@
                 <div class="p-value">High</div>
                 <input type="radio" name="Priority" id="high" value="high" required>
                 <label for="Notes"><b>Notes</b></label>
-                <textarea name="Notes" placeholder="Type additional details here" id="notes"
+                <textarea id="notes" name="Notes" placeholder="Type additional details here" id="notes"
                     style="font-family:sans-serif;font-size:1em;"></textarea>
                 <button type="submit" class="btn">Add Task</button>
                 <button type="button" class="btn cancel">Cancel</button>
