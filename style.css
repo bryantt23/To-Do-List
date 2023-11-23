@@ -71,17 +71,17 @@ html {
   background-color: red;
 }
 
-#high {
+.high {
     accent-color: red;
     height: 15px;
 }
 
-#medium {
+.medium {
     accent-color: yellow;
     height: 15px;
 }
 
-#low {
+.low {
     accent-color: rgb(44, 227, 44);
     height: 15px;
 }
