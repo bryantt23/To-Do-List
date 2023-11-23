@@ -5,9 +5,9 @@ openForm.addEventListener("click", function () {
 });
 
 //Cancel and Submit Form
-const reset = document.querySelector(".form-container")
-const closeForm = document.querySelector(".cancel")
-const addTask = document.querySelector(".btn")
+const reset = document.querySelector(".form-container");
+const closeForm = document.querySelector(".cancel");
+const addTask = document.querySelector(".btn");
 
 closeForm.addEventListener("click", function () {
     document.querySelector(".form-popup").style.display = "none";
@@ -23,8 +23,13 @@ addTask.addEventListener("click", function (event) {
 });
 
 //Access Tasks Dropdown Open/Close on Click In/Out
-const viewTaskbtn = document.querySelector(".dropbtn")
-const viewTask = document.querySelector(".dropdown-content")
+const viewTaskbtn = document.querySelector(".dropbtn");
+const viewTask = document.querySelector(".dropdown-content");
+const viewAll = document.getElementById("viewAll");
+const workCat = document.getElementById("workAll");
+const homeCat = document.getElementById("homeAll");
+const mindCat = document.getElementById("mindAll");
+const miscCat = document.getElementById("miscAll");
 
 viewTaskbtn.addEventListener("click", function () {
     if (viewTask.style.display === "block") {
@@ -38,6 +43,26 @@ document.addEventListener("click", function (event) {
     if (event.target !== viewTaskbtn && !viewTask.contains(event.target)) {
         viewTask.style.display = "none";
     }
+});
+
+viewAll.addEventListener("click", function () {
+    alert("hello");
+});
+
+workCat.addEventListener("click", function () {
+    displayTaskCategory("Work");
+});
+
+homeCat.addEventListener("click", function () {
+    displayTaskCategory("Home");
+});
+
+mindCat.addEventListener("click", function () {
+    displayTaskCategory("Mind");
+});
+
+miscCat.addEventListener("click", function () {
+    displayTaskCategory("Miscellaneous");
 });
 
 //Get Tasks Values
@@ -97,12 +122,55 @@ function displayTask(taskInfo) {
     taskList.appendChild(taskDiv);
 };
 
+//Default Display Tasks And Sort Tasks By Category
+const taskData = {
+    Work: [
+        { category: "Work", title: "Zoom Call", description: "New Client", date: "2023-11-29", priority: "Low", notes: "Use inside voice" },
+        { category: "Work", title: "Email", description: "Reply to Lenny", date: "2023-11-26", priority: "Medium", notes: "Go over chart again" }
+      ],
+      Home: [
+        { category: "Home", title: "Tidy Up", description: "Sister coming into town", date: "2023-11-30", priority: "High", notes: "Hide all of the cookies" }
+      ],
+      Mind: [
+        { category: "Mind", title: "Study", description: "Chapter 12-14", date: "2023-12-01", priority: "Low", notes: "Highlight key points" },
+        { category: "Mind", title: "Happy Thoughts", description: "Positive affirmations", date: "2023-12-02", priority: "Medium", notes: "Say these when needed" }
+      ],
+      Miscellaneous: [
+        { category: "Miscellaneous", title: "End Subscription", description: "No more Amazon Prime", date: "2023-12-03", priority: "High", notes: "Only 5 days left" }
+      ]
+};
+
+function categorizeTask(category, task){
+    if(!taskData[category]) {
+        taskData[category] = [];
+    }
+    taskData[category].push(task);
+};
+
+function displayTaskCategory(categoryChoice) {
+    const taskList = document.getElementById("task-list");
+    taskList.innerHTML = "";
+
+    const tasks = taskData[categoryChoice] || [];
+
+    tasks.forEach((task) => {
+        const taskDiv = document.createElement("div");
+        taskList.appendChild(taskDiv);
+        displayTask(task);
+    }); 
+};
+
+const newTaskCat = {
+    Category: "Work",
+    Title: "Finish Project"
+};
+categorizeTask(newTaskCat.category, newTaskCat);
+displayTaskCategory("Work");
 
 
 
-
-//Display tasks on page
-//Make them default on page load
+//How to view all
+//How to make new tasks stay on page
 //Add edit and delete buttons 
-//Figure out how to sort them by category
+//style and format tasks
 
