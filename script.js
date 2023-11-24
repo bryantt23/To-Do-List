@@ -48,7 +48,7 @@ document.addEventListener("click", function (event) {
 });
 
 viewAll.addEventListener("click", function () {
-    displayTaskCategory("All");
+    displayTaskCategory("View All");
 });
 
 workCat.addEventListener("click", function () {
@@ -95,6 +95,9 @@ function displayTask(taskInfo) {
     const taskList = document.getElementById("task-list");
     const taskDiv = document.createElement("div");
     taskDiv.classList.add("task-style");
+    const taskDetails = document.createElement("div");
+    taskDetails.classList.add("task-details");
+
     const catP = document.createElement("p");
     catP.classList.add("cat-task");
     catP.textContent = `Category: ${taskInfo.category}`;
@@ -114,12 +117,33 @@ function displayTask(taskInfo) {
     notesP.classList.add("notes-task");
     notesP.textContent = `Notes: ${taskInfo.notes}`;
 
-    taskDiv.appendChild(catP);
-    taskDiv.appendChild(titleP);
-    taskDiv.appendChild(descriptP);
-    taskDiv.appendChild(dateP);
-    taskDiv.appendChild(priorityP);
-    taskDiv.appendChild(notesP);
+    taskDetails.appendChild(catP);
+    taskDetails.appendChild(titleP);
+    taskDetails.appendChild(descriptP);
+    taskDetails.appendChild(dateP);
+    taskDetails.appendChild(priorityP);
+    taskDetails.appendChild(notesP);
+
+    //Edit And Delete
+    const editBtn = document.createElement("button");
+    editBtn.textContent = "Edit";
+    editBtn.classList.add("edit-button");
+
+    editBtn.addEventListener("click", function () {
+
+    });
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Delete";
+    deleteBtn.classList.add("delete-button");
+
+    deleteBtn.addEventListener("click", function () {
+
+    });
+
+    taskDiv.appendChild(taskDetails);
+    taskDiv.appendChild(editBtn);
+    taskDiv.appendChild(deleteBtn);
 
     taskList.appendChild(taskDiv);
 };
@@ -163,7 +187,7 @@ function displayTaskCategory(categoryChoice) {
 };
 
 const newTaskCat = {
-    Category:"Work",
+    Category: "Work",
     Title: "Finish Project"
 };
 categorizeTask(newTaskCat.category, newTaskCat);
