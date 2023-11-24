@@ -17,9 +17,11 @@ closeForm.addEventListener("click", function () {
 addTask.addEventListener("click", function (event) {
     event.preventDefault();
     let taskInfo = taskValue();
+    displayTaskCategory(taskInfo.category);
     displayTask(taskInfo);
     document.querySelector(".form-popup").style.display = "none";
     reset.reset();
+    //saveTasks();
 });
 
 //Access Tasks Dropdown Open/Close on Click In/Out
@@ -46,7 +48,7 @@ document.addEventListener("click", function (event) {
 });
 
 viewAll.addEventListener("click", function () {
-    alert("hello");
+    displayTaskCategory("All");
 });
 
 workCat.addEventListener("click", function () {
@@ -127,21 +129,21 @@ const taskData = {
     Work: [
         { category: "Work", title: "Zoom Call", description: "New Client", date: "2023-11-29", priority: "Low", notes: "Use inside voice" },
         { category: "Work", title: "Email", description: "Reply to Lenny", date: "2023-11-26", priority: "Medium", notes: "Go over chart again" }
-      ],
-      Home: [
+    ],
+    Home: [
         { category: "Home", title: "Tidy Up", description: "Sister coming into town", date: "2023-11-30", priority: "High", notes: "Hide all of the cookies" }
-      ],
-      Mind: [
+    ],
+    Mind: [
         { category: "Mind", title: "Study", description: "Chapter 12-14", date: "2023-12-01", priority: "Low", notes: "Highlight key points" },
         { category: "Mind", title: "Happy Thoughts", description: "Positive affirmations", date: "2023-12-02", priority: "Medium", notes: "Say these when needed" }
-      ],
-      Miscellaneous: [
+    ],
+    Miscellaneous: [
         { category: "Miscellaneous", title: "End Subscription", description: "No more Amazon Prime", date: "2023-12-03", priority: "High", notes: "Only 5 days left" }
-      ]
+    ]
 };
 
-function categorizeTask(category, task){
-    if(!taskData[category]) {
+function categorizeTask(category, task) {
+    if (!taskData[category]) {
         taskData[category] = [];
     }
     taskData[category].push(task);
@@ -157,15 +159,35 @@ function displayTaskCategory(categoryChoice) {
         const taskDiv = document.createElement("div");
         taskList.appendChild(taskDiv);
         displayTask(task);
-    }); 
+    });
 };
 
 const newTaskCat = {
-    Category: "Work",
+    Category:"Work",
     Title: "Finish Project"
 };
 categorizeTask(newTaskCat.category, newTaskCat);
 displayTaskCategory("Work");
+//saveTasks();
+
+//Using LocalStorage to Save and Load Tasks on Page
+/*function saveTasks() {
+    localStorage.setItem("taskList", JSON.stringify(taskData));
+};
+
+function loadTasks(categoryChoice) {
+    const savedTaskList = localStorage.getItem("taskList");
+    if(savedTaskList) {
+        taskList = JSON.parse(savedTaskList);
+        categorizeTask(newTaskCat.category, newTaskCat);
+        displayTaskCategory(categoryChoice);
+    }
+};*/
+
+
+
+
+
 
 
 
