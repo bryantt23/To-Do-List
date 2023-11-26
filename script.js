@@ -131,7 +131,7 @@ function displayTask(taskInfo) {
     editBtn.classList.add("edit-button");
 
     editBtn.addEventListener("click", function () {
-        
+
     });
 
     const deleteBtn = document.createElement("button");
@@ -139,9 +139,9 @@ function displayTask(taskInfo) {
     deleteBtn.classList.add("delete-button");
 
     deleteBtn.addEventListener("click", function () {
-        if(confirm("Are you sure you want to delete this task?")){
+        if (confirm("Are you sure you want to delete this task?")) {
             const index = taskData[taskInfo.category].indexOf(taskInfo);
-            if(index !== -1) {
+            if (index !== -1) {
                 taskData[taskInfo.category].splice(index, 1);
             }
             taskDiv.remove();
@@ -185,13 +185,24 @@ function displayTaskCategory(categoryChoice) {
     const taskList = document.getElementById("task-list");
     taskList.innerHTML = "";
 
-    const tasks = taskData[categoryChoice] || [];
+    if (categoryChoice === "View All") {
+        for (const category in taskData) {
+            if (taskData.hasOwnProperty(category)) {
+                const tasks = taskData[category] || [];
+                tasks.forEach((task) => {
+                    displayTask(task);
+                });
+            }
+        }
+    } else {
+        const tasks = taskData[categoryChoice] || [];
 
-    tasks.forEach((task) => {
-        const taskDiv = document.createElement("div");
-        taskList.appendChild(taskDiv);
-        displayTask(task);
-    });
+        tasks.forEach((task) => {
+            const taskDiv = document.createElement("div");
+            taskList.appendChild(taskDiv);
+            displayTask(task);
+        });
+    };
 };
 
 const newTaskCat = {
@@ -221,8 +232,7 @@ loadTasks()
 
 
 
-//How to view all
+//Remove undefined task from View All
 //How to make new tasks stay on page when refresh page
-//Add edit button functionality 
-//style and format tasks
+//Add edit button functionality
 
