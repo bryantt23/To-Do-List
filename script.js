@@ -223,6 +223,6 @@ loadTasks()
 
 //How to view all
 //How to make new tasks stay on page when refresh page
-//Add edit and delete button functionality 
+//Add edit button functionality 
 //style and format tasks
 
