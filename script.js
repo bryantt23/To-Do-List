@@ -21,7 +21,8 @@ addTask.addEventListener("click", function (event) {
     displayTask(taskInfo);
     document.querySelector(".form-popup").style.display = "none";
     reset.reset();
-    //saveTasks();
+    categorizeTask(taskInfo.category, taskInfo);
+    saveTasks();
 });
 
 //Access Tasks Dropdown Open/Close on Click In/Out
@@ -149,7 +150,7 @@ function displayTask(taskInfo) {
 };
 
 //Default Display Tasks And Sort Tasks By Category
-const taskData = {
+let taskData = {
     Work: [
         { category: "Work", title: "Zoom Call", description: "New Client", date: "2023-11-29", priority: "Low", notes: "Use inside voice" },
         { category: "Work", title: "Email", description: "Reply to Lenny", date: "2023-11-26", priority: "Medium", notes: "Go over chart again" }
@@ -192,22 +193,20 @@ const newTaskCat = {
 };
 categorizeTask(newTaskCat.category, newTaskCat);
 displayTaskCategory("Work");
-//saveTasks();
+saveTasks();
 
 //Using LocalStorage to Save and Load Tasks on Page
-/*function saveTasks() {
-    localStorage.setItem("taskList", JSON.stringify(taskData));
+function saveTasks() {
+    localStorage.setItem("taskData", JSON.stringify(taskData));
 };
 
-function loadTasks(categoryChoice) {
-    const savedTaskList = localStorage.getItem("taskList");
-    if(savedTaskList) {
-        taskList = JSON.parse(savedTaskList);
-        categorizeTask(newTaskCat.category, newTaskCat);
-        displayTaskCategory(categoryChoice);
+function loadTasks() {
+    const storeData = localStorage.getItem("taskData")
+    if (storeData) {
+        taskData = JSON.parse(storeData);
     }
-};*/
-
+};
+loadTasks()
 
 
 
@@ -216,7 +215,7 @@ function loadTasks(categoryChoice) {
 
 
 //How to view all
-//How to make new tasks stay on page
-//Add edit and delete buttons 
+//How to make new tasks stay on page when refresh page
+//Add edit and delete button functionality 
 //style and format tasks
 
