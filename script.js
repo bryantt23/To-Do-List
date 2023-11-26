@@ -131,7 +131,7 @@ function displayTask(taskInfo) {
     editBtn.classList.add("edit-button");
 
     editBtn.addEventListener("click", function () {
-
+        
     });
 
     const deleteBtn = document.createElement("button");
@@ -139,7 +139,14 @@ function displayTask(taskInfo) {
     deleteBtn.classList.add("delete-button");
 
     deleteBtn.addEventListener("click", function () {
-
+        if(confirm("Are you sure you want to delete this task?")){
+            const index = taskData[taskInfo.category].indexOf(taskInfo);
+            if(index !== -1) {
+                taskData[taskInfo.category].splice(index, 1);
+            }
+            taskDiv.remove();
+            saveTasks();
+        }
     });
 
     taskDiv.appendChild(taskDetails);
