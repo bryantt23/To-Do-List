@@ -112,7 +112,8 @@ function handleEditTask(taskInfo, taskDiv) {
 
     editSubmit.addEventListener("click", function (event) {
         event.preventDefault();
-
+        const oldTask = JSON.parse(JSON.stringify(taskInfo));
+        deleteOldTask(oldTask);
         // Update the taskInfo with the edited values
         taskInfo.category = categoryInput.value;
         taskInfo.title = titleInput.value;
@@ -131,18 +132,27 @@ function handleEditTask(taskInfo, taskDiv) {
         taskDetails.querySelector(".notes-task").textContent = `Notes: ${taskInfo.notes}`;
 
         document.querySelector(".form-popup").style.display = "none";
-
-        saveTasks();
+        
     });
 };
+
+function deleteOldTask(taskInfo) {
+    const index = taskData[taskInfo.category].findIndex((element) => {
+        return Object.keys(taskInfo).every(key => {
+            return element[key] === taskInfo[key];
+        });
+    });
+    //const index = taskData[taskInfo.category].indexOf(taskInfo);
+        if (index !== -1) {
+            taskData[taskInfo.category].splice(index, 1);
+        }
+};
+
 
 //Delete Task
 function handleDeleteTask(taskInfo, taskDiv) {
     if (confirm("Are you sure you want to delete this task?")) {
-        const index = taskData[taskInfo.category].indexOf(taskInfo);
-        if (index !== -1) {
-            taskData[taskInfo.category].splice(index, 1);
-        }
+        deleteOldTask(taskInfo);
         taskDiv.remove();
         saveTasks();
     }
