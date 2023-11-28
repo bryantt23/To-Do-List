@@ -150,6 +150,10 @@ function handleDeleteTask(taskInfo, taskDiv) {
 
 //Display Tasks on Page
 function displayTask(taskInfo) {
+    if (taskInfo === null) {
+        return; 
+    }
+
     const taskList = document.getElementById("task-list");
     const taskDiv = document.createElement("div");
     taskDiv.classList.add("task-style");
@@ -159,6 +163,8 @@ function displayTask(taskInfo) {
     const catP = document.createElement("p");
     catP.classList.add("cat-task");
     catP.textContent = `Category: ${taskInfo.category}`;
+
+    
 
     const titleP = document.createElement("p");
     titleP.classList.add("title-task");
@@ -240,7 +246,6 @@ function categorizeTask(category, task) {
 function displayTaskCategory(categoryChoice) {
     const taskList = document.getElementById("task-list");
     taskList.innerHTML = "";
-
     if (categoryChoice === "View All") {
         for (const category in taskData) {
             if (taskData.hasOwnProperty(category)) {
