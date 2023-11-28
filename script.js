@@ -130,7 +130,7 @@ function handleEditTask(taskInfo, taskDiv) {
       const oldTask = JSON.parse(JSON.stringify(taskInfo));
       deleteOldTask(oldTask);
       saveTasks();
-      displayTaskCategory(taskInfo.category);
+      displayTaskCategory(curCategory);
     }
 
     // Update the taskInfo with the edited values
